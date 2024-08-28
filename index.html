@@ -3,17 +3,290 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>My Favorite Hobby</title>
     <style>
-      body {
-        background: linear-gradient(to right, blue, violet);
+      .top-of-page {
+        display: flex;
+        justify-content: flex-end;
+        padding: 10px;
       }
-      h1 {
+
+      .toggle {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+      }
+
+      .toggle input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: black;
+        transition: 0.4s;
+      }
+
+      .slider.darktheme {
+        background-color: aqua;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: 0.4s;
+      }
+
+      input:checked + .slider {
+        background-color: orange;
+      }
+
+      input:focus + .slider {
+        box-shadow: 0 0 1px rgb(187, 255, 0);
+      }
+
+      input:checked + .slider:before {
+        transform: translateX(26px);
+      }
+
+      .slider.round {
+        border-radius: 34px;
+      }
+
+      .slider.round:before {
+        border-radius: 50%;
+      }
+
+      body {
+        background: linear-gradient(
+          to right,
+          rgb(241, 162, 13),
+          rgb(250, 41, 139)
+        );
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      body.darktheme {
+        background: linear-gradient(to left, rgb(111, 0, 255), rgb(4, 2, 63));
+        color: white;
+      }
+
+      .container-box {
         background-color: rgba(240, 248, 255, 0.616);
+        margin: 50px auto;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.596);
+        border-radius: 10px;
+        max-width: 600px;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .container-box.darktheme {
+        background-color: rgba(0, 0, 0, 0.671);
+      }
+
+      h1 {
+        font-size: 45px;
+        text-align: center;
+        margin: 15px 0;
+      }
+
+      h2 {
+        margin: 15px 0;
+        font-size: 28px;
+      }
+
+      .image-container {
+        background-color: white;
+        display: flex;
+        width: 80%;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.623);
+      }
+
+      .image-container.darktheme {
+        background-color: rgb(26, 3, 109);
+      }
+
+      .hero-image {
+        width: 400px;
+        height: auto;
+        justify-content: center;
+        margin-top: 10px;
+        border-radius: 10px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 10px;
+        align-items: center;
+        margin: 10px;
+      }
+
+      .grid img {
+        width: 100px;
+        height: auto;
+        border-radius: 10px;
+      }
+
+      img {
+        transition: all 300ms ease;
+      }
+
+      .grid img:hover {
+        scale: 2;
+      }
+
+      .blurb {
+        font-size: 20px;
+        text-align: justify;
+        color: black;
+        line-height: 30px;
+        margin: 20px auto;
+      }
+
+      .blurb.darktheme {
+        color: white;
+      }
+
+      .wikilink {
+        text-align: center;
+        margin: 20px;
+        font-size: 22px;
+        color: magenta;
+      }
+
+      .wikilink.darktheme {
+        color: blueviolet;
+      }
+
+      .more-info {
+        background-color: orange;
+        color: white;
+        border-radius: 50px;
+        box-shadow: 0 2px 5px black;
+        padding: 25px;
+        font-size: 25px;
+      }
+
+      .more-info.darktheme {
+        background-color: rgb(27, 27, 27);
+      }
+
+      .more-info:hover {
+        background-color: magenta;
+      }
+
+      .more-info.darktheme:hover {
+        background-color: blueviolet;
+      }
+
+      footer {
+        text-align: center;
+        font-size: 18px;
+        margin-top: 20px;
+      }
+
+      .githublink {
+        color: rgb(187, 1, 187);
+      }
+
+      .githublink.darktheme {
+        color: rgb(122, 38, 201);
       }
     </style>
   </head>
-  <body>
-    <h1>Comic Books</h1>
+  <body class="lighttheme">
+    <div class="top-of-page">
+      <label class="toggle">
+        <input type="checkbox" id="theme-toggle" />
+        <span class="slider round"></span>
+      </label>
+    </div>
+    <div class="container-box">
+      <h1>💥 Comic Books 🦹🏽</h1>
+      <h2>My favourite hobby!</h2>
+      <div class="image-container">
+        <div class="hero-image">
+          <img
+            class="hero-image"
+            src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/141/216/original/Pages_of_a_Comic_Book.jpg?1724791044"
+            alt="comic book"
+          />
+        </div>
+        <div class="grid">
+          <img
+            src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/141/217/original/81PdN_p3iuL._AC_UF1000_1000_QL80_.jpg?1724794419"
+            alt="Ghost Spider Comic Cover"
+          />
+          <img
+            src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/141/218/original/91_sLDPbyvL._AC_UF1000_1000_QL80_.jpg?1724794452"
+            alt="New X-Men Comic Cover"
+          />
+          <img
+            src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/141/219/original/saga-61_101825ba29.jpg?1724794573"
+            alt="Saga Comic Cover"
+          />
+          <img
+            src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/141/220/original/the-wicked-the-divine-1_2e9b2f1490.jpg?1724794654"
+            alt="Wicked + the Divine Comic Cover"
+          />
+        </div>
+      </div>
+      <p class="blurb">
+        Comics are a medium used to express ideas with images, often combined
+        with text or other visual information. It typically takes the form of a
+        sequence of panels of images. Textual devices such as speech balloons,
+        captions, and onomatopoeia can indicate dialogue, narration, sound
+        effects, or other information.
+      </p>
+      <a class="wikilink" href="https://en.wikipedia.org/wiki/Comics"
+        >📖 Read more on Wikipedia</a
+      >
+      <button class="more-info">
+        Click here to schedule a Comic Consultation
+      </button>
+      <footer>
+        Coded by
+        <a class="githublink" href="https://github.com/nberts">Nina B.</a> with
+        html, CSS and JavaScript
+      </footer>
+    </div>
+
+    <script>
+      document
+        .getElementById("theme-toggle")
+        .addEventListener("change", function () {
+          document.body.classList.toggle("darktheme");
+          document
+            .querySelector(".container-box")
+            .classList.toggle("darktheme");
+          document
+            .querySelector(".image-container")
+            .classList.toggle("darktheme");
+          document.querySelector(".more-info").classList.toggle("darktheme");
+          document.querySelector(".blurb").classList.toggle("darktheme");
+          document.querySelector(".wikilink").classList.toggle("darktheme");
+          document.querySelector(".githublink").classList.toggle("darktheme");
+        });
+    </script>
   </body>
 </html>
